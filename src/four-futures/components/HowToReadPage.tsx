@@ -1,0 +1,198 @@
+import { axisDefinitions, primaryDriverOptions } from "../data/axisDefinitions";
+import { FutureAxisTable } from "./FutureAxisTable";
+import { FuturePageFooter } from "./FuturePageFooter";
+import { FutureSidebarNav } from "./FutureSidebarNav";
+import { FutureTopNav } from "./FutureTopNav";
+import { Reveal } from "./Reveal";
+
+const SECTIONS = [
+  { id: "seven-axes", label: "The seven forces" },
+  { id: "understanding-axes", label: "Understanding the axes" },
+  { id: "putting-it-together", label: "Putting it together" },
+];
+
+function SectionEyebrow({ index, label }: { index: string; label: string }) {
+  return (
+    <p className="label-mono !font-medium mb-4 text-[#747474]">
+      {index} — {label}
+    </p>
+  );
+}
+
+export function HowToReadPage() {
+  return (
+    <div className="bg-paper text-ink-deep">
+      <FutureTopNav activeSlug="" />
+
+      {/* hero */}
+      <section className="border-b border-ink-deep/10 pb-14 pt-14 md:pb-20 md:pt-20">
+        <div className="container-editorial grid grid-cols-1 gap-8 md:grid-cols-12 md:gap-10">
+          <Reveal className="md:col-span-7">
+            <h1 className="text-balance font-sans text-display-2 font-bold leading-[1.03] text-ink-deep">
+              How to read the futures
+            </h1>
+          </Reveal>
+          <Reveal delay={1} className="md:col-span-5">
+            <p className="text-edit font-normal leading-relaxed text-ink-deep/60">
+              The four futures combine different conditions across seven
+              forces shaping higher education, work, and learning. Each
+              future takes a different position across these forces,
+              creating a distinct system and experience for the people
+              within it.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* body */}
+      <section className="container-editorial grid grid-cols-1 gap-14 py-16 md:grid-cols-12 md:gap-10 md:py-24">
+        <div className="md:col-span-3">
+          <FutureSidebarNav title="On This Page" sections={SECTIONS} />
+        </div>
+
+        <div className="md:col-span-9 md:max-w-4xl">
+          {/* 01 the seven axes */}
+          <div id="seven-axes" className="scroll-mt-[160px]">
+            <Reveal>
+              <SectionEyebrow index="01" label="The Seven Forces" />
+              <h2 className="text-balance font-sans text-display-3 font-bold leading-tight text-ink-deep">
+                The seven forces
+              </h2>
+              <p className="mt-3 text-copy leading-relaxed text-ink-deep/50">
+                Each future is shaped by the seven forces. The primary driver
+                identifies the main force shaping each future, and the six
+                axes each have two poles. The table shows how these forces
+                come together in each scenario.
+              </p>
+              <div className="mt-6">
+                <FutureAxisTable activeSlug="" />
+              </div>
+            </Reveal>
+          </div>
+
+          {/* 02 understanding the axes */}
+          <div id="understanding-axes" className="scroll-mt-[160px] border-t border-ink-deep/10 pt-12 mt-12">
+            <Reveal>
+              <SectionEyebrow index="02" label="Understanding The Forces" />
+              <h2 className="text-balance font-sans text-display-3 font-bold leading-tight text-ink-deep">
+                Understanding the forces
+              </h2>
+              <p className="mt-3 text-copy leading-relaxed text-ink-deep/50">
+                The definitions below explain what each force means and how
+                its different positions shape the future.
+              </p>
+
+              <div className="mt-10">
+                <h4 className="font-sans text-subhead font-bold leading-snug text-ink-deep">
+                  Primary driver
+                </h4>
+                <p className="mt-1 text-copy text-ink-deep/50">
+                  What force is shaping the future?
+                </p>
+                <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  {primaryDriverOptions.map((option) => (
+                    <div
+                      key={option.label}
+                      className="border-t-2 border-explorer-cyan bg-paper-dim/40 p-5"
+                    >
+                      <p className="font-sans text-sm font-normal text-ink-deep">
+                        {option.label}
+                      </p>
+                      <p className="mt-2 text-sm leading-relaxed text-ink-deep/60">
+                        {option.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-10">
+                <h4 className="font-sans text-subhead font-bold leading-snug text-ink-deep">
+                  The axes
+                </h4>
+                <p className="mt-1 text-copy text-ink-deep/50">
+                  Each axis represents a spectrum between two opposing
+                  possibilities.
+                </p>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-10">
+                {axisDefinitions.map((axis) => (
+                  <div key={axis.number}>
+                    <h3 className="font-sans text-lg font-bold text-ink-deep md:text-xl">
+                      {axis.number} - {axis.label}
+                    </h3>
+                    <p className="mt-1 text-copy text-ink-deep/50">{axis.question}</p>
+                    <div className="mt-4 flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+                      <div className="border-t-2 border-explorer-cyan bg-paper-dim/40 p-5 sm:flex-1">
+                        <p className="font-sans text-sm font-normal text-ink-deep">
+                          {axis.options[0].label}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-ink-deep/60">
+                          {axis.options[0].description}
+                        </p>
+                      </div>
+                      <span className="shrink-0 rotate-90 text-center text-lg text-ink-deep/30 sm:rotate-0">
+                        &harr;
+                      </span>
+                      <div className="border-t-2 border-explorer-cyan bg-paper-dim/40 p-5 sm:flex-1">
+                        <p className="font-sans text-sm font-normal text-ink-deep">
+                          {axis.options[1].label}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-ink-deep/60">
+                          {axis.options[1].description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 03 putting it together — closing CTA */}
+      <section
+        id="putting-it-together"
+        className="scroll-mt-[160px] bg-navy py-20 md:py-28"
+      >
+        <div className="container-editorial">
+          <Reveal>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-[200px_1fr] md:gap-10 md:items-center">
+              <div>
+                <span className="inline-flex items-center justify-center text-center bg-explorer-cyan px-4 py-2 font-sans text-base font-bold uppercase tracking-wide text-ink-deep">
+                  Putting It Together
+                </span>
+              </div>
+
+              <div className="md:max-w-5xl">
+                <h2 className="text-balance font-sans text-display-3 font-bold leading-[1.05] text-paper">
+                  How the forces create a future
+                </h2>
+
+                <div className="mt-6 flex flex-col gap-4">
+                  <p className="text-copy font-normal leading-relaxed text-paper/60">
+                    A future where institutions remain trusted, labor changes
+                    gradually, AI augments human work, and higher education
+                    remains workforce focused creates a very different system
+                    from one where credentials fragment, labor becomes
+                    volatile, and learning moves continuously between
+                    institutions, employers, and platforms.
+                  </p>
+                </div>
+
+                <p className="mt-6 font-sans text-subhead font-normal leading-snug text-paper">
+                  The futures explore what becomes possible and what becomes
+                  difficult when these forces move together.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <FuturePageFooter />
+    </div>
+  );
+}

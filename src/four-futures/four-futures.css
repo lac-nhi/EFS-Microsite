@@ -1,0 +1,117 @@
+/*
+  Global styles from the original Four Futures site, scoped to .ff-root so they
+  don't affect the rest of the microsite. Fonts come from the site's Adobe Fonts kit
+  (the old site self-hosted the font files). Adobe's weight numbers run one step higher:
+  the old site's 400 (Roman) is 500 here, 300 (Light) is 400.
+*/
+:root {
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --container-pad: clamp(1.25rem, 4vw, 4rem);
+}
+
+html:has(.ff-root) {
+  scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+.ff-root {
+  color: #000000;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* Tailwind v3 defaults the old site was written against. In the base layer so
+   Tailwind's own classes still win, as they did on the old site. */
+@layer base {
+  .ff-root *,
+  .ff-root ::before,
+  .ff-root ::after {
+    border-color: var(--color-gray-200, currentColor);
+  }
+  .ff-root button:not(:disabled),
+  .ff-root [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  .ff-root ::selection {
+    background: #00a3e0;
+    color: #ffffff;
+  }
+  .ff-root a {
+    color: inherit;
+  }
+}
+
+/* ---------- shared editorial primitives ---------- */
+
+.container-editorial {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.ff-root .rule {
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  opacity: 0.18;
+  border: none;
+}
+
+.label-mono {
+  font-family: var(--font-sans);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+/* film-grain overlay: layered above dark cinematic sections */
+.ff-root .grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ---------- scroll reveal ---------- */
+
+.ff-root .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-editorial), transform 0.9s var(--ease-editorial);
+  will-change: opacity, transform;
+}
+.ff-root .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ff-root .reveal-delay-1 { transition-delay: 0.08s; }
+.ff-root .reveal-delay-2 { transition-delay: 0.16s; }
+.ff-root .reveal-delay-3 { transition-delay: 0.24s; }
+.ff-root .reveal-delay-4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ff-root .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* atmospheric abstract backgrounds (no external imagery) */
+.ff-root .atmosphere {
+  position: relative;
+  background: #272f42;
+}
+
+.ff-root .atmosphere-cool {
+  background:
+    radial-gradient(50% 45% at 80% 10%, rgba(116, 116, 116, 0.3), transparent 60%),
+    radial-gradient(60% 55% at 15% 85%, rgba(28, 35, 51, 0.6), transparent 60%),
+    #272f42;
+}
+
+.ff-root .text-balance {
+  text-wrap: balance;
+}

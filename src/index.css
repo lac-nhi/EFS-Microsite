@@ -38,6 +38,31 @@
   --color-accent-gray: #b5bacc;
   --color-accent-gold: #ffc726;
   --color-accent-maroon: #8c1c40;
+
+  /* Four Futures section (src/four-futures), carried over from the earlier site.
+     Its "ink" was pure black, so it is ink-deep here. */
+  --font-weight-light: 400; /* Adobe's Display 45 Light */
+  --color-ink-deep: #000000;
+  --color-ink-soft: #12151b;
+  --color-navy-light: #39415a;
+  --color-navy-dim: #1c2333;
+  --color-paper: #ffffff;
+  --color-paper-dim: #f2f2f2;
+  --color-paper-deep: #e6e6e6;
+  --color-explorer-cyan: #00a3e0;
+  --color-explorer-pink: #8c1d40;
+  --color-explorer-orange: #ff7f32;
+  --color-explorer-blue: #00a3e0;
+  --color-explorer-green: #78be20;
+  --text-display-1: clamp(2.5rem, 6.5vw, 6rem);
+  --text-display-2: 62px;
+  --text-display-3: 46px;
+  --text-edit: 20px;
+  --text-copy: 18px;
+  --text-subhead: 24px;
+  --tracking-widest2: 0.28em;
+  --container-container: 1600px;
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {

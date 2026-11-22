@@ -1,10 +1,13 @@
 import { BrowserRouter, Outlet, Route, Routes, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import SiteFooter from './components/SiteFooter'
 import SiteHeader from './components/SiteHeader'
 import AboutPage from './pages/AboutPage'
 import BigIdeaPage from './pages/BigIdeaPage'
 import Home from './pages/Home'
+
+// Loaded on its own so the rest of the site doesn't download its charts and maps
+const FourFuturesApp = lazy(() => import('./four-futures/FourFuturesApp'))
 
 function Layout() {
   const { pathname } = useLocation()
@@ -37,6 +40,15 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Has its own header and footer for now */}
+        <Route
+          path="/four-futures/*"
+          element={
+            <Suspense fallback={<div className="min-h-screen bg-navy" />}>
+              <FourFuturesApp />
+            </Suspense>
+          }
+        />
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/big-ideas/:slug" element={<BigIdeaPage />} />

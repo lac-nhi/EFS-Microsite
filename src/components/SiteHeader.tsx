@@ -7,12 +7,12 @@ type NavItem = { to: string; label: string; end?: boolean; external?: boolean }
 
 const NAV: NavItem[] = [
   { to: '/', label: 'Big Ideas', end: true },
-  // Lives on a separate site, so it opens in a new tab
+  // The Four Futures section opens in a new tab
   { to: FOUR_FUTURES_URL, label: 'The Four Futures', external: true },
   { to: '/about', label: 'About' },
 ]
 
-/** Router link for pages on this site, plain new-tab link for other sites. */
+/** Router link, or a plain new-tab link for items marked external. */
 function NavItemLink({ item, className }: { item: NavItem; className: (isActive: boolean) => string }) {
   if (item.external) {
     return (

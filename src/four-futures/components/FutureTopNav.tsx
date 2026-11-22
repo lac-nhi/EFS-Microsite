@@ -1,0 +1,45 @@
+import { Link } from "react-router-dom";
+import { futures } from "../data/futures";
+import { getFutureAccent } from "../data/futureAccents";
+import { InstitutionMark } from "./InstitutionMark";
+
+interface FutureTopNavProps {
+  activeSlug: string;
+}
+
+export function FutureTopNav({ activeSlug }: FutureTopNavProps) {
+  return (
+    <header className="sticky top-0 z-50">
+      <div className="bg-navy">
+        <div className="container-wide flex h-[76px] items-center justify-between sm:h-[100px]">
+          <InstitutionMark tone="light" />
+        </div>
+      </div>
+      <nav className="bg-paper">
+        <div className="container-editorial flex h-11 items-center gap-8 border-b border-ink-deep/10 overflow-x-auto">
+          {futures.map((future) => {
+            const isActive = future.slug === activeSlug;
+            return (
+              <Link
+                key={future.id}
+                to={`/four-futures/futures/${future.slug}`}
+                className={[
+                  "label-mono relative shrink-0 py-3 transition-colors duration-300",
+                  isActive ? "!font-bold text-ink-deep" : "text-ink-deep/40 hover:text-ink-deep/70",
+                ].join(" ")}
+              >
+                {future.codename}
+                {isActive && (
+                  <span
+                    className="absolute inset-x-0 -bottom-px h-[2px]"
+                    style={{ backgroundColor: getFutureAccent(future.slug) }}
+                  />
+                )}
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
+    </header>
+  );
+}
