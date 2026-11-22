@@ -1,56 +1,53 @@
-import { ArrowUpRight } from "lucide-react";
 import { useState, type CSSProperties } from "react";
 import type { Persona } from "../data/types";
 import { asset } from "../lib/asset";
 import { PersonaModal } from "./PersonaModal";
 
+/** Persona cards (Figma: Working designs, node 563:209) */
 export function PersonaPicker({ personas }: { personas: Persona[] }) {
   const [selected, setSelected] = useState<Persona | null>(null);
 
   return (
-    <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-3">
+    <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-[42px] xl:grid-cols-[repeat(3,330px)] xl:justify-between xl:gap-x-0">
       {personas.map((persona) => {
-        const colorVars = {
-          "--pcolor": persona.color,
-          "--pcolor-glow": `${persona.color}66`,
-        } as CSSProperties;
+        const accent = { "--pcolor": persona.color } as CSSProperties;
+        // Figma's tighter head-and-shoulders crop of the same photo
+        const thumb = `personas-thumbs/${persona.photo.split("/").pop()}`;
 
         return (
-          <div key={persona.id} className="group relative" style={colorVars}>
-            <span
-              className="absolute -top-3 left-6 h-4 w-16 rounded-t-md"
-              style={{ background: persona.color }}
-            />
-            <button
-              type="button"
-              onClick={() => setSelected(persona)}
-              className="relative flex h-full w-full flex-col overflow-hidden rounded-xl border border-paper/10 bg-navy text-left transition-all duration-300 group-hover:border-[var(--pcolor)] group-hover:bg-navy-light group-hover:shadow-[0_0_0_1px_var(--pcolor-glow)]"
-            >
-              <div className="p-6">
-                <div className="flex items-start justify-between">
-                  <img
-                    src={asset(persona.photo)}
-                    alt={persona.name}
-                    className="h-24 w-24 shrink-0 rounded-full object-cover"
-                  />
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-paper/20 text-paper/40 transition-colors duration-300 group-hover:border-[var(--pcolor)] group-hover:text-[var(--pcolor)]">
-                    <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
-                  </span>
-                </div>
+          <button
+            key={persona.id}
+            type="button"
+            onClick={() => setSelected(persona)}
+            style={accent}
+            className="group flex min-h-[320px] w-full flex-col justify-between rounded-[8px] border-t-6 border-[var(--pcolor)] bg-navy px-8 pt-8 pb-[52px] text-left text-white transition-colors duration-300 hover:bg-navy-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--pcolor)] lg:h-[350px]"
+          >
+            <span className="flex w-full justify-end">
+              <img
+                src={asset("icons/arrow-circle-up-right.svg")}
+                alt=""
+                width={42}
+                height={42}
+                className="size-[42px] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </span>
 
-                <div className="mt-8">
-                  <div className="font-sans text-xl font-normal text-paper md:text-2xl">
-                    {persona.name}, {persona.age}
-                  </div>
-                  <span
-                    className="mt-2 block h-[3px] w-full rounded-full"
-                    style={{ background: persona.color }}
-                  />
-                  <div className="mt-2 text-sm text-paper/50">{persona.archetype}</div>
-                </div>
-              </div>
-            </button>
-          </div>
+            <span className="flex w-full flex-col gap-6">
+              <img
+                src={asset(thumb)}
+                alt={persona.name}
+                width={132}
+                height={132}
+                className="size-[132px] shrink-0 rounded-full object-cover"
+              />
+              <span className="flex w-full flex-col gap-3">
+                <span className="block border-b-3 border-[var(--pcolor)] py-2.5 pr-2.5 pl-2 text-[clamp(1.25rem,1.05rem+0.5vw,1.5rem)] leading-[1.1] font-bold">
+                  {persona.name}, {persona.age}
+                </span>
+                <span className="type-body block pl-2 leading-[1.1]">{persona.archetype}</span>
+              </span>
+            </span>
+          </button>
         );
       })}
 

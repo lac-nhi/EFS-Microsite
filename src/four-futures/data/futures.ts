@@ -12,7 +12,7 @@ export const futures: Future[] = [
     tagline:
       "Entry-level and routine work quietly disappears, at every level, without one single moment of crisis.",
     homeQuestion:
-      "If career readiness is no longer a destination you reach at graduation, but a subscription you pay for your entire life, how might a university redesign itself to remain a continuous, accessible option for everyone?",
+      "How do you keep climbing a ladder that never stops moving?",
     statement:
       "Never compete with an algorithm for the job that once taught you how to work.",
     overview:
@@ -123,7 +123,7 @@ export const futures: Future[] = [
     tagline:
       "Every verification system fails at once, and nothing replaces trust. It just disappears.",
     homeQuestion:
-      "If a credential can no longer be trusted to signal readiness, how might a university redesign itself to rebuild trust with learners and employers that its validation is an accurate reflection of skills and abilities?",
+      "How do you prove you're ready when nothing can vouch for you?",
     statement: "Human authenticity becomes the scarcest credential of all.",
     overview:
       "Synthetic content, AI-generated applications, automated portfolios, and intelligent agents become commonplace. Human authenticity becomes valuable, and people increasingly have to prove which skills, ideas, and work are genuinely theirs.",
@@ -236,7 +236,7 @@ export const futures: Future[] = [
     shortTitle: "Constraint",
     tagline: "Climate risk redraws the map of where people can live, learn, and work.",
     homeQuestion:
-      "If where you live and how quickly you can adjust increasingly determines what career opportunities you have, how might a university redesign itself to prepare people for flexibility and adaptability across career fields and geographies so they are equipped to respond?",
+      "How do you build a career on ground that won't stay still?",
     statement: "Stability became something you build, not something you're given.",
     overview:
       "Escalating climate risk redraws where people can safely live, learn, and work. Entire regions become unstable for long-term investment, forcing institutions and careers to become mobile by design.",
@@ -348,7 +348,7 @@ export const futures: Future[] = [
     tagline:
       "Guaranteed income makes education less about survival and more about purpose and choice.",
     homeQuestion:
-      "If pursuing a college education is no longer solely about economic gain, how might a university redesign itself to prepare learners to identify their purpose and interests and build a career path connected to meaningful work?",
+      "What do you chase when you no longer have to chase safety?",
     statement: "Safety stopped being the finish line. It became the starting line.",
     overview:
       "A baseline guaranteed income removes the urgency of employment as pure survival. Credentials stop functioning as a safety mechanism and start functioning as something people pursue for its own sake — or not at all.",

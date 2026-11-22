@@ -111,7 +111,7 @@ export const personas: Persona[] = [
     id: "leo",
     name: "Leo",
     archetype: "The Builder",
-    color: "#747474",
+    color: "#b2bcd2",
     age: 20,
     aiRelationship: "AI developer",
     photo: "/personas-hq/leo.jpg",

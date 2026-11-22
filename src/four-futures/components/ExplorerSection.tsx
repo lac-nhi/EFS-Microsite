@@ -63,21 +63,22 @@ export function ExplorerSection() {
       <HowItWorksSection />
 
       {/* personas */}
-      <section id="personas" className="scroll-mt-[76px] sm:scroll-mt-[100px] bg-paper py-20 text-ink-deep md:py-28">
+      {/* Figma: Working designs, node 563:201 */}
+      <section id="personas" className="scroll-mt-[76px] bg-paper py-12 text-ink sm:scroll-mt-[100px] lg:py-[100px]">
         <div className="container-editorial">
-          <div className="mx-auto grid max-w-[1152px] grid-cols-1 gap-8 md:grid-cols-12 md:items-center">
-            <div className="md:col-span-5">
+          <div className="mx-auto flex max-w-[1152px] flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+            <div className="flex flex-col gap-2 lg:w-[380px] lg:shrink-0">
               <Reveal>
-                <p className="label-mono !font-medium text-[#747474]">Personas</p>
+                <p className="type-small font-medium text-muted uppercase">Personas</p>
               </Reveal>
               <Reveal delay={1}>
-                <h2 className="text-balance mt-4 font-sans text-display-3 font-bold leading-[1.05] text-ink-deep">
+                <h2 className="type-h2 lg:pb-4">
                   Whose 2036 is it?
                 </h2>
               </Reveal>
             </div>
-            <Reveal delay={2} className="md:col-span-6 md:col-start-7">
-              <p className="text-copy font-normal leading-relaxed text-ink-deep/60">
+            <Reveal delay={2} className="max-w-[600px] lg:w-[600px] lg:shrink">
+              <p className="type-body leading-[1.5]">
                 Every future looks different depending on where you stand.
                 Select your persona and experience it from their perspective.
               </p>
@@ -85,36 +86,34 @@ export function ExplorerSection() {
           </div>
         </div>
 
-        <Reveal delay={3} className="container-editorial mt-14">
+        <Reveal delay={3} className="container-editorial mt-10 lg:mt-12">
           <div className="mx-auto max-w-[1080px]">
             <PersonaPicker personas={personas} />
           </div>
         </Reveal>
       </section>
 
-      {/* futures */}
-      <section id="futures" className="scroll-mt-[76px] sm:scroll-mt-[100px] bg-paper py-20 text-ink-deep md:py-28">
+      {/* futures (Figma: Working designs, node 563:296) */}
+      <section id="futures" className="scroll-mt-[76px] bg-paper pt-16 pb-24 text-ink sm:scroll-mt-[100px] lg:pt-[120px] lg:pb-[200px]">
         <div className="container-editorial">
-          <div className="mx-auto grid max-w-[1152px] grid-cols-1 gap-8 md:grid-cols-12 md:items-center">
-            <div className="md:col-span-5">
+          <div className="mx-auto flex max-w-[1152px] flex-col gap-6 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+            <div className="flex flex-col gap-2 lg:w-[414px] lg:shrink-0">
               <Reveal>
-                <p className="label-mono !font-medium text-[#747474]">Futures</p>
+                <p className="type-small font-medium text-muted uppercase">Futures</p>
               </Reveal>
               <Reveal delay={1}>
-                <h2 className="text-balance mt-4 font-sans text-display-3 font-bold leading-[1.05] text-ink-deep">
-                  Choose your future
-                </h2>
+                <h2 className="type-h2 pb-4 max-lg:pb-0">Choose your future</h2>
               </Reveal>
             </div>
-            <Reveal delay={2} className="md:col-span-6 md:col-start-7">
-              <p className="text-copy font-normal leading-relaxed text-ink-deep/60">
+            <Reveal delay={2} className="max-w-[600px] lg:w-[600px] lg:shrink">
+              <p className="type-body mb-3 leading-[1.5]">
                 Each future is a possible 2036, told from multiple angles: how
                 it started, how it unfolded, who lives with the consequences,
                 and what questions remain.
               </p>
               <Link
                 to="/four-futures/how-to-read"
-                className="mt-4 inline-block rounded-none border border-ink-deep/30 px-5 py-2.5 font-sans text-sm text-ink-deep transition-colors duration-300 hover:border-ink-deep"
+                className="type-body leading-[1.5] underline decoration-from-font underline-offset-auto hover:no-underline"
               >
                 How to read the futures →
               </Link>
@@ -122,8 +121,8 @@ export function ExplorerSection() {
           </div>
         </div>
 
-        <Reveal delay={3} className="container-editorial mt-14">
-          <div className="mx-auto flex max-w-[1080px] flex-col">
+        <Reveal delay={3} className="container-editorial mt-10 lg:mt-12">
+          <div className="mx-auto flex max-w-[1080px] flex-col gap-5 sm:gap-7">
             {futures.map((future) => (
               <FutureListRow key={future.id} future={future} />
             ))}
