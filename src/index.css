@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+
+/*
+  Fonts: Neue Haas Grotesk Display + Text, served by the Adobe Fonts web
+  project linked in index.html (kit ayr4kum).
+
+  Adobe's weight numbers for Neue Haas Grotesk Display are one step higher
+  than the usual mapping, so the weight tokens below follow Adobe:
+    Display 45 Light  = 400 (not used)
+    Display 55 Roman  = 500  -> font-normal (body text)
+    Display 65 Medium = 600  -> font-medium (card titles)
+    Display 75 Bold   = 700  -> font-bold
+    Text    75 Bold   = 700  (h1/h2)
+*/
+
+/* Design tokens from the Figma file */
+@theme {
+  --font-sans: 'neue-haas-grotesk-display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-heading: 'neue-haas-grotesk-text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --font-weight-normal: 500;
+  --font-weight-medium: 600;
+  --font-weight-bold: 700;
+
+  --color-navy: #272f42; /* primary/navy */
+  --color-ink: #1a1c24; /* text */
+  --color-mist: #f7f7f7;
+  --color-rule: #d9dce2;
+  --color-link: #47ceff;
+  --color-muted: #747474; /* secondary text, inactive tabs */
+  --color-quiet: #4a4f5c; /* notes */
+  --color-tab-rule: #d9d9d9;
+  --color-card-line: #e0e3e8;
+  --color-note-rule: #c9ccd3;
+  --color-accent-blue: #00a3e0;
+  --color-accent-orange: #ff7f32;
+  --color-accent-green: #78be20;
+  --color-accent-gray: #b5bacc;
+  --color-accent-gold: #ffc726;
+  --color-accent-maroon: #8c1c40;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-white font-sans font-normal text-ink;
+  }
+}
+
+/* Type styles (Figma text styles), scaled down on small screens */
+@utility type-h1 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(2rem, 1.6rem + 2.6vw, 3.5rem); /* ~34px on small phones → 56px */
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  /* Long words (e.g. "experimentation") must never push past a narrow screen */
+  overflow-wrap: break-word;
+}
+@utility type-h2 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-bold);
+  font-size: clamp(1.875rem, 1.45rem + 1.4vw, 2.625rem); /* 30px → 42px */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  /* Long words (e.g. "experimentation") must never push past a narrow screen */
+  overflow-wrap: break-word;
+}
+@utility type-h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  font-size: clamp(1.375rem, 1.2rem + 0.6vw, 1.625rem); /* 22px → 26px */
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+@utility type-body {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-normal);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); /* 16px → 18px */
+  line-height: 1.45;
+}
+
+@utility type-lede {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-normal);
+  font-size: clamp(1rem, 0.86rem + 0.45vw, 1.25rem); /* 16px on phones (matches body text) → 20px */
+  line-height: 1.5;
+}
+
+@utility type-small {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-normal);
+  font-size: clamp(0.9375rem, 0.91rem + 0.12vw, 1rem); /* 15px → 16px */
+  line-height: 1.45;
+}
+
+/* Page gutters: Figma uses 80px (header/footer) and 116px (content) at 1512px */
+@utility container-wide {
+  width: 100%;
+  max-width: calc(1352px + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+@utility container-content {
+  width: 100%;
+  max-width: calc(1280px + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+:root {
+  --gutter: 20px;
+}
+@media (min-width: 640px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 48px;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --gutter: 80px;
+  }
+}
