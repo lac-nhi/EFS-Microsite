@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useActiveSection } from "../../hooks/useActiveSection";
 
 export interface SidebarSection {
   id: string;
@@ -26,28 +26,7 @@ export function FutureSidebarNav({
   title = "In This Future",
   sections = DEFAULT_SECTIONS,
 }: FutureSidebarNavProps) {
-  const [activeId, setActiveId] = useState(sections[0].id);
-
-  useEffect(() => {
-    const elements = sections.map((s) => document.getElementById(s.id)).filter(
-      (el): el is HTMLElement => !!el
-    );
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length === 0) return;
-        const top = visible.reduce((a, b) =>
-          Math.abs(a.boundingClientRect.top) < Math.abs(b.boundingClientRect.top) ? a : b
-        );
-        setActiveId(top.target.id);
-      },
-      { rootMargin: "-15% 0px -70% 0px", threshold: [0, 0.5, 1] }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [sections]);
+  const { active: activeId, select } = useActiveSection(sections.map((s) => s.id));
 
   return (
     <nav className="hidden h-full md:block">
@@ -60,6 +39,8 @@ export function FutureSidebarNav({
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
+                  onClick={() => select(section.id)}
+                  aria-current={isActive ? "location" : undefined}
                   className={[
                     "block border-l-2 py-1 pl-3 text-[16px] leading-[1.5] transition-colors",
                     isActive

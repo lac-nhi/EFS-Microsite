@@ -1,28 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useActiveSection } from '../hooks/useActiveSection'
 
 export type NavSection = { id: string; label: string }
-
-/** Tracks which section is being read: the first one whose top part is on screen. */
-function useActiveSection(sections: readonly NavSection[]): string {
-  const [active, setActive] = useState(sections[0]?.id ?? '')
-
-  useEffect(() => {
-    const els = sections.map((s) => document.getElementById(s.id)).filter((el): el is HTMLElement => !!el)
-    const visible = new Map<string, boolean>()
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) visible.set(e.target.id, e.isIntersecting)
-        const first = sections.find((s) => visible.get(s.id))
-        if (first) setActive(first.id)
-      },
-      { rootMargin: '-15% 0px -60% 0px' },
-    )
-    els.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [sections])
-
-  return active
-}
 
 /**
  * Sticky "jump to section" list used in the left column of the big idea and About pages.
@@ -37,7 +15,7 @@ export default function SectionNav({
   label?: string
   ariaLabel: string
 }) {
-  const active = useActiveSection(sections)
+  const { active, select } = useActiveSection(sections.map((s) => s.id))
 
   return (
     <nav aria-label={ariaLabel} className="sticky top-8 flex flex-col gap-3.5">
@@ -49,6 +27,7 @@ export default function SectionNav({
             <li key={s.id}>
               <a
                 href={`#${s.id}`}
+                onClick={() => select(s.id)}
                 aria-current={isActive ? 'location' : undefined}
                 className={`block border-l-2 py-1 pl-3 text-[16px] leading-[1.5] transition-colors ${
                   isActive ? 'border-accent-blue font-medium text-ink' : 'border-rule text-muted hover:text-ink'
