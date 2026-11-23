@@ -13,16 +13,16 @@ export function FutureAxisTable({ activeSlug }: { activeSlug: string }) {
 
   return (
     <div className="overflow-x-auto rounded-xl border border-ink-deep/10">
-      <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+      <table className="type-small w-full min-w-[640px] border-collapse text-left">
         <thead>
           <tr>
-            <th className="bg-navy w-[26%] px-4 py-3 font-sans font-medium text-paper">Forces</th>
+            <th className="w-[26%] bg-navy px-4 py-3 font-medium text-white">Forces</th>
             {COLUMNS.map((col) => {
               const isActive = col.slug === activeSlug;
               return (
                 <th
                   key={col.slug}
-                  className="px-4 py-3 font-sans font-bold text-paper"
+                  className="px-4 py-3 font-medium text-white"
                   style={isActive ? { backgroundColor: accent } : { backgroundColor: "#272f42" }}
                 >
                   {col.label}
@@ -34,7 +34,7 @@ export function FutureAxisTable({ activeSlug }: { activeSlug: string }) {
         <tbody>
           {axisComparisonRows.map((row, i) => (
             <tr key={row.label} className={i % 2 === 1 ? "bg-paper-dim/40" : undefined}>
-              <td className="border-b border-ink-deep/10 px-4 py-4 text-sm font-normal text-ink-deep">
+              <td className="border-b border-ink-deep/10 px-4 py-4 text-ink">
                 {row.label}
               </td>
               {COLUMNS.map((col) => {
@@ -43,8 +43,8 @@ export function FutureAxisTable({ activeSlug }: { activeSlug: string }) {
                   <td
                     key={col.slug}
                     className={[
-                      "border-b border-ink-deep/10 px-4 py-4 text-sm font-normal leading-snug",
-                      isActive ? "text-ink-deep" : "text-ink-deep/60",
+                      "border-b border-ink-deep/10 px-4 py-4",
+                      isActive ? "font-medium text-ink" : "text-ink",
                     ].join(" ")}
                     style={isActive ? { backgroundColor: hexToRgba(accent, 0.14) } : undefined}
                   >

@@ -9,6 +9,8 @@ import {
 import { useEffect, useRef } from "react";
 
 Chart.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip);
+// Draw chart labels in the site font (Neue Haas Grotesk Display, from the Adobe Fonts kit)
+Chart.defaults.font.family = "neue-haas-grotesk-display, Helvetica Neue, Arial, sans-serif";
 
 const LABELS = ["2024", "2026", "2028", "2030", "2032", "2034", "2036"];
 const DATA = [82, 70, 56, 44, 38, 30, 22];

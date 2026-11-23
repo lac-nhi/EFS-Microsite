@@ -1,7 +1,7 @@
 import { useEffect, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import CroppedImage, { type Crop } from '../components/CroppedImage'
-import FuturesFramework from '../components/FuturesFramework'
+import FuturesFramework, { FuturesFrameworkStacked } from '../components/FuturesFramework'
 import { BIG_IDEAS, type BigIdea } from '../content/bigIdeas'
 import { FOUR_FUTURES_URL } from '../content/links'
 
@@ -152,11 +152,9 @@ export default function Home() {
             convening tested to identify the major disruptions to the status quo that the Big Idea would create.
           </SectionIntro>
 
-          {/* The framework diagram is laid out for desktop: let it scroll sideways on narrow screens so it stays legible */}
-          <div className="-mx-[var(--gutter)] overflow-x-auto px-[var(--gutter)] md:mx-0 md:overflow-visible md:px-0">
-            <FuturesFramework className="w-full min-w-[720px] md:min-w-0" />
-          </div>
-          <p className="-mt-6 text-[14px] text-ink/60 md:hidden">Scroll sideways to see the full diagram.</p>
+          {/* The desktop diagram's text gets too small below 1100px, so smaller screens get a stacked version */}
+          <FuturesFramework className="hidden w-full min-[1100px]:block" />
+          <FuturesFrameworkStacked className="min-[1100px]:hidden" />
         </div>
       </section>
 

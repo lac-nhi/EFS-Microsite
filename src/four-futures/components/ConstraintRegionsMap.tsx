@@ -139,7 +139,7 @@ export function ConstraintRegionsMap() {
 
   return (
     <div className="rounded-xl border border-ink-deep/10 bg-paper-dim p-6 md:p-8">
-      <div className="mb-4 flex items-center gap-5 text-xs text-ink-deep/60">
+      <div className="type-small mb-4 flex items-center gap-5 text-ink">
         <span className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-xs bg-[#8c1d40]" />
           Shrinking regions
@@ -154,8 +154,8 @@ export function ConstraintRegionsMap() {
 
       <div className="mt-6 flex flex-wrap justify-between gap-6">
         <div className="min-w-[180px] flex-1">
-          <p className="mb-2 text-sm font-normal text-[#8c1d40]">Declining industries</p>
-          <p className="text-xs leading-[1.8] text-ink-deep/60">
+          <p className="type-small mb-2 font-medium text-[#8c1d40]">Declining industries</p>
+          <p className="type-small text-ink">
             Traditional farming
             <br />
             Tourism
@@ -164,8 +164,8 @@ export function ConstraintRegionsMap() {
           </p>
         </div>
         <div className="min-w-[180px] flex-1 text-right">
-          <p className="mb-2 text-sm font-normal text-[#4f7a0f]">Growing industries</p>
-          <p className="text-xs leading-[1.8] text-ink-deep/60">
+          <p className="type-small mb-2 font-medium text-[#4f7a0f]">Growing industries</p>
+          <p className="type-small text-ink">
             Vertical farming
             <br />
             Renewable energy
@@ -177,7 +177,7 @@ export function ConstraintRegionsMap() {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center gap-2 text-[11px] text-ink-deep/60">
+      <div className="type-small mt-6 flex flex-wrap items-center gap-2 text-ink">
         {BREADCRUMBS.map((crumb, i) => (
           <span key={crumb} className="flex items-center gap-2">
             <span className="whitespace-nowrap rounded-md border border-ink-deep/15 bg-paper px-2.5 py-2">

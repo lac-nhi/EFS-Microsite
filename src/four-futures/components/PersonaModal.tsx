@@ -49,18 +49,20 @@ export function PersonaModal({ persona, onClose }: PersonaModalProps) {
                 href={asset(`personas-cards/${persona.id}.png`)}
                 download={`${persona.id}-persona-card.png`}
                 aria-label="Download persona card as PNG"
-                className="flex h-9 items-center gap-2 rounded-full border border-paper/30 px-3 text-paper transition-colors duration-300 hover:border-paper"
+                className="flex h-10 items-center gap-2 rounded-full border border-paper/30 px-4 text-paper transition-colors duration-300 hover:border-paper"
               >
                 <Download className="h-4 w-4" strokeWidth={1.75} />
-                <span className="label-mono hidden sm:inline">Download PNG</span>
+                <span className="type-small hidden font-medium sm:inline">Download PNG</span>
               </a>
               <button
                 type="button"
                 onClick={onClose}
                 aria-label="Close"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-paper/30 text-paper transition-colors duration-300 hover:border-paper"
+                className="flex size-10 items-center justify-center rounded-full border border-paper/30 text-paper transition-colors duration-300 hover:border-paper"
               >
-                ✕
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
+                  <path d="M6 6l12 12M18 6L6 18" />
+                </svg>
               </button>
             </div>
 
@@ -77,8 +79,8 @@ export function PersonaModal({ persona, onClose }: PersonaModalProps) {
                     className="aspect-square w-16 shrink-0 rounded-xl object-cover"
                   />
                   <div className="min-w-0">
-                    <div className="font-sans text-xl font-normal text-paper">{persona.name}</div>
-                    <div className="mt-1 inline-block font-sans text-base font-normal text-ink-deep">
+                    <div className="type-h3 text-white">{persona.name}</div>
+                    <div className="type-body mt-1 inline-block text-ink-deep">
                       <span className="text-paper">The </span>
                       <span
                         className={`bg-[var(--pcolor)] px-1.5 ${persona.archetypeTextColor === "paper" ? "text-paper" : ""}`}
@@ -90,7 +92,7 @@ export function PersonaModal({ persona, onClose }: PersonaModalProps) {
                 </div>
 
                 <div className="mt-4 md:mt-0">
-                  <div className="label-mono flex items-center justify-between text-paper/70">
+                  <div className="type-body flex items-center justify-between font-medium text-white">
                     <span>
                       {persona.age}, {persona.aiRelationship}
                     </span>
@@ -105,8 +107,8 @@ export function PersonaModal({ persona, onClose }: PersonaModalProps) {
                 />
 
                 <div className="hidden md:block">
-                  <div className="font-sans text-2xl font-normal text-paper md:text-3xl">{persona.name}</div>
-                  <div className="mt-1 inline-block font-sans text-xl font-normal text-ink-deep md:text-2xl">
+                  <div className="type-h2 text-white">{persona.name}</div>
+                  <div className="type-h3 mt-2 inline-block text-ink-deep">
                     <span className="text-paper">The </span>
                     <span
                       className={`bg-[var(--pcolor)] px-1.5 ${persona.archetypeTextColor === "paper" ? "text-paper" : ""}`}
@@ -121,45 +123,45 @@ export function PersonaModal({ persona, onClose }: PersonaModalProps) {
               <div className="min-h-0 flex-1 overflow-y-auto bg-paper p-8 md:p-10">
                 <dl className="flex flex-col gap-6">
                   <div>
-                    <dt className="label-mono !font-medium text-[#747474]">Background</dt>
-                    <dd className="mt-2 text-copy leading-relaxed text-ink-deep/75">{persona.background}</dd>
+                    <dt className="type-body font-medium text-[#3a4057]">Background</dt>
+                    <dd className="type-body mt-1.5 text-ink">{persona.background}</dd>
                   </div>
                   <div>
-                    <dt className="label-mono !font-medium text-[#747474]">Finances</dt>
-                    <dd className="mt-2 text-copy leading-relaxed text-ink-deep/75">{persona.finances}</dd>
+                    <dt className="type-body font-medium text-[#3a4057]">Finances</dt>
+                    <dd className="type-body mt-1.5 text-ink">{persona.finances}</dd>
                   </div>
                   <div>
-                    <dt className="label-mono !font-medium text-[#747474]">Worldview</dt>
-                    <dd className="mt-2 text-copy leading-relaxed text-ink-deep/75">{persona.worldview}</dd>
+                    <dt className="type-body font-medium text-[#3a4057]">Worldview</dt>
+                    <dd className="type-body mt-1.5 text-ink">{persona.worldview}</dd>
                   </div>
                   <div>
-                    <dt className="label-mono !font-medium text-[#747474]">Strengths</dt>
-                    <dd className="mt-2 text-copy leading-relaxed text-ink-deep/75">
+                    <dt className="type-body font-medium text-[#3a4057]">Strengths</dt>
+                    <dd className="type-body mt-1.5 text-ink">
                       {persona.strengths.join(", ")}
                     </dd>
                   </div>
                   <div>
-                    <dt className="label-mono !font-medium text-[#747474]">Biggest fear</dt>
-                    <dd className="mt-2 text-copy leading-relaxed text-ink-deep/75">{persona.biggestFear}</dd>
+                    <dt className="type-body font-medium text-[#3a4057]">Biggest fear</dt>
+                    <dd className="type-body mt-1.5 text-ink">{persona.biggestFear}</dd>
                   </div>
                   <div>
-                    <dt className="label-mono !font-medium text-[#747474]">Success looks like</dt>
-                    <dd className="mt-2 text-copy leading-relaxed text-ink-deep/75">{persona.successLooksLike}</dd>
+                    <dt className="type-body font-medium text-[#3a4057]">Success looks like</dt>
+                    <dd className="type-body mt-1.5 text-ink">{persona.successLooksLike}</dd>
                   </div>
                 </dl>
 
-                <span className="mt-8 block h-px w-full" style={{ background: persona.color }} />
+                <span className="mt-8 block h-1 w-full" style={{ background: persona.color }} />
 
                 <div className="mt-8">
-                  <p className="label-mono !font-medium text-[#747474]">In their shoes</p>
-                  <p className="mt-2 text-balance font-sans text-lg leading-snug text-ink-deep">{persona.inTheirShoes}</p>
+                  <p className="type-body font-medium text-[#3a4057]">In their shoes</p>
+                  <p className="type-body mt-1.5 text-ink">{persona.inTheirShoes}</p>
                 </div>
 
-                <div className="relative mt-6 rounded-xl bg-navy p-6 pl-12 text-paper">
-                  <span className="absolute left-4 top-3 font-sans text-3xl leading-none text-paper/40">
+                <div className="-mx-8 mt-10 -mb-8 flex flex-col gap-3 bg-[#3b4159] px-8 py-10 text-white md:-mx-10 md:-mb-10 md:px-10">
+                  <span aria-hidden="true" className="font-heading text-[64px] leading-[0.6] font-bold" style={{ color: persona.color }}>
                     &ldquo;
                   </span>
-                  <p className="text-balance text-copy italic leading-relaxed text-paper/85">{persona.quote}</p>
+                  <p className="type-body">{persona.quote}</p>
                 </div>
               </div>
             </div>

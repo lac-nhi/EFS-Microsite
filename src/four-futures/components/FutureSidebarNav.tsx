@@ -52,8 +52,8 @@ export function FutureSidebarNav({
   return (
     <nav className="hidden h-full md:block">
       <div className="sticky top-[164px]">
-        <p className="label-mono !font-medium mb-5 text-[#747474]">{title}</p>
-        <ul className="flex flex-col gap-1 border-l border-ink-deep/10">
+        <p className="mb-3.5 text-[15px] leading-[1.5] font-medium tracking-[0.06em] text-muted uppercase">{title}</p>
+        <ul className="flex flex-col gap-1.5">
           {sections.map((section) => {
             const isActive = activeId === section.id;
             return (
@@ -61,10 +61,10 @@ export function FutureSidebarNav({
                 <a
                   href={`#${section.id}`}
                   className={[
-                    "-ml-px flex items-center gap-3 border-l-2 py-2 pl-4 text-sm transition-colors duration-300",
+                    "block border-l-2 py-1 pl-3 text-[16px] leading-[1.5] transition-colors",
                     isActive
-                      ? "border-explorer-cyan text-ink-deep"
-                      : "border-transparent text-ink-deep/45 hover:text-ink-deep/70",
+                      ? "border-accent-blue font-medium text-ink"
+                      : "border-rule text-muted hover:text-ink",
                   ].join(" ")}
                 >
                   {section.label}
@@ -75,7 +75,7 @@ export function FutureSidebarNav({
         </ul>
         <Link
           to="/four-futures/how-to-read"
-          className="mt-6 inline-block rounded-none border border-ink-deep/30 px-5 py-2.5 font-sans text-sm text-ink-deep transition-colors duration-300 hover:border-ink-deep"
+          className="type-small mt-6 inline-block rounded-[4px] border border-ink px-4 py-2 text-ink transition-colors duration-300 hover:bg-ink/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
         >
           How to read the futures
         </Link>

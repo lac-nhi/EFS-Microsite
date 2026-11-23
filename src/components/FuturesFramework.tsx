@@ -197,3 +197,78 @@ export default function FuturesFramework({ className = '' }: { className?: strin
     </div>
   )
 }
+
+/**
+ * The same diagram for screens under 1100px, where the desktop version's text would shrink below a readable size.
+ * Each design challenge becomes a card that reads top to bottom: challenge → three design options → big idea.
+ */
+export function FuturesFrameworkStacked({ className = '' }: { className?: string }) {
+  return (
+    <div className={`flex flex-col gap-8 ${className}`}>
+      <div className="flex flex-col gap-3">
+        <p className="type-small font-medium" style={{ color: LABEL }}>
+          4 Futures
+        </p>
+        <ul className="flex flex-wrap gap-2.5">
+          {FUTURES.map((f) => (
+            <li key={f.label}>
+              <a
+                href={f.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="type-small inline-flex min-h-11 items-center rounded-full bg-navy px-5 font-bold text-white transition-colors hover:bg-[#3a4562] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-blue"
+              >
+                {f.label}
+                <span className="sr-only"> future (opens in a new tab)</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <ol className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
+        {ROWS.map((row) => {
+          const idea = BIG_IDEAS.find((b) => b.slug === row.slug)!
+          return (
+            <li key={row.slug} className="flex flex-col overflow-hidden rounded-[6px] border" style={{ borderColor: CARD_BORDER }}>
+              <div className="flex flex-col gap-1 p-5">
+                <p className="type-small font-medium" style={{ color: LABEL }}>
+                  Design challenge
+                </p>
+                <p className="type-body" style={{ color: TEXT }}>
+                  {idea.detail?.atAGlance.designQuestion}
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2 px-5 pb-5">
+                <p className="type-small font-medium" style={{ color: LABEL }}>
+                  Design options
+                </p>
+                <ul className="flex flex-col gap-2">
+                  {row.options.map((o) => (
+                    <li key={o} className="type-small rounded-full px-4 py-2 text-center" style={{ background: PILL_BG, color: TEXT }}>
+                      {o}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <Link
+                to={`/big-ideas/${row.slug}`}
+                className={`mt-auto flex items-center justify-between gap-4 border-t-[5px] bg-navy px-5 py-4 text-white transition-[filter] hover:brightness-125 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white ${idea.accent}`}
+              >
+                <span className="flex flex-col gap-0.5">
+                  <span className="type-small text-white/70">Big idea</span>
+                  <span className="type-body font-bold">{idea.title}</span>
+                </span>
+                <span aria-hidden="true" className="text-xl">
+                  →
+                </span>
+              </Link>
+            </li>
+          )
+        })}
+      </ol>
+    </div>
+  )
+}

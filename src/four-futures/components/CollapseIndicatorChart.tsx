@@ -10,6 +10,8 @@ import {
 import { useEffect, useRef } from "react";
 
 Chart.register(LineController, LineElement, PointElement, CategoryScale, LinearScale, Tooltip);
+// Draw chart labels in the site font (Neue Haas Grotesk Display, from the Adobe Fonts kit)
+Chart.defaults.font.family = "neue-haas-grotesk-display, Helvetica Neue, Arial, sans-serif";
 
 const LABELS = ["2024", "2026", "2028", "2030", "2032", "2034", "2036"];
 const DATA = [47, 58, 63, 68, 76, 82, 88];
@@ -79,7 +81,7 @@ export function CollapseIndicatorChart() {
           aria-label="Line chart showing percentage increase in employer apprenticeships from 2024 to 2036: 47%, 58%, 63%, 68%, 76%, 82%, 88%"
         />
       </div>
-      <p className="mt-2 text-center text-xs text-ink-deep/40">
+      <p className="type-small mt-2 text-center text-ink">
         Source: apprenticeship.gov/data-and-statistics
       </p>
     </div>

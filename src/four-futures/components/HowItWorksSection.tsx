@@ -22,7 +22,7 @@ const STEPS = [
 export function HowItWorksSection() {
   return (
     <section className="bg-paper pt-16 pb-12 text-ink lg:pt-[120px] lg:pb-[100px]">
-      <div className="container-editorial">
+      <div className="container-wide">
         <div className="mx-auto flex max-w-[1152px] flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           <div className="flex flex-col gap-2 lg:w-[380px] lg:shrink-0">
             <Reveal>

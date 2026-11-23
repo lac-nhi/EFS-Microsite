@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { futures } from "../data/futures";
-import { getFutureAccent } from "../data/futureAccents";
 import { InstitutionMark } from "./InstitutionMark";
 
 interface FutureTopNavProps {
@@ -15,26 +14,21 @@ export function FutureTopNav({ activeSlug }: FutureTopNavProps) {
           <InstitutionMark tone="light" />
         </div>
       </div>
-      <nav className="bg-paper">
-        <div className="container-editorial flex h-11 items-center gap-8 border-b border-ink-deep/10 overflow-x-auto">
+      {/* Styled like the main site navigation (SiteHeader): 18px text, 1.5px underline on the current page */}
+      <nav aria-label="The four futures" className="border-b border-ink-deep/10 bg-paper">
+        <div className="container-wide flex h-11 items-center gap-6 overflow-x-auto">
           {futures.map((future) => {
             const isActive = future.slug === activeSlug;
             return (
               <Link
                 key={future.id}
                 to={`/four-futures/futures/${future.slug}`}
-                className={[
-                  "label-mono relative shrink-0 py-3 transition-colors duration-300",
-                  isActive ? "!font-bold text-ink-deep" : "text-ink-deep/40 hover:text-ink-deep/70",
-                ].join(" ")}
+                aria-current={isActive ? "page" : undefined}
+                className={`flex h-[26px] shrink-0 items-center border-b-[1.5px] pb-[6px] text-[18px] leading-[1.1] whitespace-nowrap text-ink transition-colors ${
+                  isActive ? "border-accent-blue" : "border-transparent hover:border-ink/50"
+                }`}
               >
-                {future.codename}
-                {isActive && (
-                  <span
-                    className="absolute inset-x-0 -bottom-px h-[2px]"
-                    style={{ backgroundColor: getFutureAccent(future.slug) }}
-                  />
-                )}
+                {future.codename.charAt(0) + future.codename.slice(1).toLowerCase()}
               </Link>
             );
           })}

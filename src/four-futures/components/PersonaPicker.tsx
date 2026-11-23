@@ -20,7 +20,7 @@ export function PersonaPicker({ personas }: { personas: Persona[] }) {
             type="button"
             onClick={() => setSelected(persona)}
             style={accent}
-            className="group flex min-h-[320px] w-full flex-col justify-between rounded-[8px] border-t-6 border-[var(--pcolor)] bg-navy px-8 pt-8 pb-[52px] text-left text-white transition-colors duration-300 hover:bg-navy-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--pcolor)] lg:h-[350px]"
+            className="group flex min-h-[320px] w-full flex-col justify-between rounded-[8px] border-t-6 border-[var(--pcolor)] bg-navy px-8 pt-8 pb-[52px] text-left text-white transition-[filter] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--pcolor)] lg:h-[350px]"
           >
             <span className="flex w-full justify-end">
               <img
@@ -28,7 +28,7 @@ export function PersonaPicker({ personas }: { personas: Persona[] }) {
                 alt=""
                 width={42}
                 height={42}
-                className="size-[42px] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                className="size-[42px] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
               />
             </span>
 
