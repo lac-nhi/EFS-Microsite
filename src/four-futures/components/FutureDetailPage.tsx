@@ -15,8 +15,12 @@ import { TransformIndicatorChart } from "./TransformIndicatorChart";
 
 function SectionEyebrow({ index, label }: { index: string; label: string }) {
   return (
-    <p className="type-small mb-2 font-medium text-muted uppercase">
-      {index} — {label}
+    // The rule runs along the same row as the label, filling the rest of the width
+    <p className="type-small mb-2 flex items-center gap-3 font-medium text-muted uppercase">
+      <span className="min-w-0">
+        {index} — {label}
+      </span>
+      <span aria-hidden="true" className="h-px min-w-6 flex-1 bg-ink-deep/10" />
     </p>
   );
 }
@@ -82,7 +86,7 @@ export function FutureDetailPage() {
 
         <div className="md:col-span-9 md:max-w-4xl">
           {/* 01 how it started */}
-          <div id="how-it-started" className="scroll-mt-[173px] pt-12 md:border-t md:border-ink-deep/10">
+          <div id="how-it-started" className="scroll-mt-[173px] pt-12">
             <Reveal>
               <SectionEyebrow index="01" label="How It Started" />
               <h2 className="type-h2 text-ink">
@@ -99,7 +103,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 02 what changed */}
-          <div id="what-changed" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="what-changed" className="scroll-mt-[173px] pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="02" label="What Changed" />
               <h2 className="type-h2 text-ink">
@@ -150,7 +154,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 03 axis positions */}
-          <div id="axis-positions" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="axis-positions" className="scroll-mt-[173px] pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="03" label="Forces" />
               <h2 className="type-h2 text-ink">
@@ -164,7 +168,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 04 future indicators */}
-          <div id="future-indicators" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="future-indicators" className="scroll-mt-[173px] pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="04" label="Future Indicators" />
               <h2 className="type-h2 text-ink">
@@ -181,7 +185,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 05 three voices */}
-          <div id="three-voices" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="three-voices" className="scroll-mt-[173px] pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="05" label="Three Voices" />
               <h2 className="type-h2 text-ink">
@@ -194,7 +198,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 06 emerging careers */}
-          <div id="emerging-careers" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="emerging-careers" className="scroll-mt-[173px] pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="06" label="Emerging Careers" />
               <h2 className="type-h2 text-ink">
@@ -217,7 +221,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 07 readiness implications */}
-          <div id="readiness-implications" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="readiness-implications" className="scroll-mt-[173px] pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="07" label="Readiness Implications" />
               <h2 className="type-h2 text-ink">

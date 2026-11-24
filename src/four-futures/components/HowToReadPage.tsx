@@ -13,8 +13,12 @@ const SECTIONS = [
 
 function SectionEyebrow({ index, label }: { index: string; label: string }) {
   return (
-    <p className="type-small mb-2 font-medium text-muted uppercase">
-      {index} — {label}
+    // The rule runs along the same row as the label, filling the rest of the width
+    <p className="type-small mb-2 flex items-center gap-3 font-medium text-muted uppercase">
+      <span className="min-w-0">
+        {index} — {label}
+      </span>
+      <span aria-hidden="true" className="h-px min-w-6 flex-1 bg-ink-deep/10" />
     </p>
   );
 }
@@ -71,7 +75,7 @@ export function HowToReadPage() {
           </div>
 
           {/* 02 understanding the axes */}
-          <div id="understanding-axes" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="understanding-axes" className="scroll-mt-[173px] pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="02" label="Understanding The Forces" />
               <h2 className="type-h2 text-ink">
