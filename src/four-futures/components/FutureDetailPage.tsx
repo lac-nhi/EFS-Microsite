@@ -5,7 +5,7 @@ import { asset } from "../lib/asset";
 import { CollapseIndicatorChart } from "./CollapseIndicatorChart";
 import { ConstraintRegionsMap } from "./ConstraintRegionsMap";
 import { FutureAxisTable } from "./FutureAxisTable";
-import { FuturePageFooter } from "./FuturePageFooter";
+import SiteFooter from "../../components/SiteFooter";
 import { FutureSidebarNav } from "./FutureSidebarNav";
 import { FutureTopNav } from "./FutureTopNav";
 import { FutureVoices } from "./FutureVoices";
@@ -82,7 +82,7 @@ export function FutureDetailPage() {
 
         <div className="md:col-span-9 md:max-w-4xl">
           {/* 01 how it started */}
-          <div id="how-it-started" className="scroll-mt-[160px] pt-12 md:border-t md:border-ink-deep/10">
+          <div id="how-it-started" className="scroll-mt-[173px] pt-12 md:border-t md:border-ink-deep/10">
             <Reveal>
               <SectionEyebrow index="01" label="How It Started" />
               <h2 className="type-h2 text-ink">
@@ -99,7 +99,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 02 what changed */}
-          <div id="what-changed" className="scroll-mt-[160px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="what-changed" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="02" label="What Changed" />
               <h2 className="type-h2 text-ink">
@@ -150,7 +150,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 03 axis positions */}
-          <div id="axis-positions" className="scroll-mt-[160px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="axis-positions" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="03" label="Forces" />
               <h2 className="type-h2 text-ink">
@@ -164,7 +164,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 04 future indicators */}
-          <div id="future-indicators" className="scroll-mt-[160px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="future-indicators" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="04" label="Future Indicators" />
               <h2 className="type-h2 text-ink">
@@ -181,7 +181,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 05 three voices */}
-          <div id="three-voices" className="scroll-mt-[160px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="three-voices" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="05" label="Three Voices" />
               <h2 className="type-h2 text-ink">
@@ -194,7 +194,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 06 emerging careers */}
-          <div id="emerging-careers" className="scroll-mt-[160px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="emerging-careers" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="06" label="Emerging Careers" />
               <h2 className="type-h2 text-ink">
@@ -217,7 +217,7 @@ export function FutureDetailPage() {
           </div>
 
           {/* 07 readiness implications */}
-          <div id="readiness-implications" className="scroll-mt-[160px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="readiness-implications" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="07" label="Readiness Implications" />
               <h2 className="type-h2 text-ink">
@@ -236,7 +236,7 @@ export function FutureDetailPage() {
       </section>
 
       {/* 08 open question — closing CTA */}
-      <section id="open-question" className="scroll-mt-[160px] bg-navy py-20 md:py-28">
+      <section id="open-question" className="scroll-mt-[173px] bg-navy py-20 md:py-28">
         <div className="container-wide">
           <Reveal>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[200px_1fr] md:gap-10 md:items-center">
@@ -271,7 +271,7 @@ export function FutureDetailPage() {
         </div>
       </section>
 
-      <FuturePageFooter />
+      <SiteFooter bg="bg-[#171c27]" />
     </div>
   );
 }

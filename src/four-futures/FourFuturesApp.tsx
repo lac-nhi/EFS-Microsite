@@ -1,7 +1,7 @@
 /*
   The Four Futures section (/four-futures/*), ported from the earlier standalone site
-  (github.com/idilkale/emerging-futures). It keeps its own header, footer and styling
-  until it is redesigned; the rest of the microsite's header/footer is not shown here.
+  (github.com/idilkale/emerging-futures). It keeps its own header and styling
+  until it is redesigned; it uses the microsite footer (SiteFooter).
 */
 import { motion } from "framer-motion";
 import { useEffect } from "react";

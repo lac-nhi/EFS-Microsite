@@ -1,8 +1,9 @@
 import Logo from './Logo'
 
-export default function SiteFooter() {
+/** `bg` overrides the background color (the Four Futures pages use a darker navy, #171C27). */
+export default function SiteFooter({ bg = 'bg-navy' }: { bg?: string }) {
   return (
-    <footer className="bg-navy text-white">
+    <footer className={`${bg} text-white`}>
       <div className="container-wide flex flex-col gap-4 py-[42px]">
         <div className="flex flex-col items-start gap-4 border-b border-rule pb-4 sm:flex-row sm:items-center sm:justify-between">
           <Logo className="w-[190.313px]" />

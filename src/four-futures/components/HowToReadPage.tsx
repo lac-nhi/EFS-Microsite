@@ -1,6 +1,6 @@
 import { axisDefinitions, primaryDriverOptions } from "../data/axisDefinitions";
 import { FutureAxisTable } from "./FutureAxisTable";
-import { FuturePageFooter } from "./FuturePageFooter";
+import SiteFooter from "../../components/SiteFooter";
 import { FutureSidebarNav } from "./FutureSidebarNav";
 import { FutureTopNav } from "./FutureTopNav";
 import { Reveal } from "./Reveal";
@@ -52,7 +52,7 @@ export function HowToReadPage() {
 
         <div className="md:col-span-9 md:max-w-4xl">
           {/* 01 the seven axes */}
-          <div id="seven-axes" className="scroll-mt-[160px]">
+          <div id="seven-axes" className="scroll-mt-[173px]">
             <Reveal>
               <SectionEyebrow index="01" label="The Seven Forces" />
               <h2 className="type-h2 text-ink">
@@ -71,7 +71,7 @@ export function HowToReadPage() {
           </div>
 
           {/* 02 understanding the axes */}
-          <div id="understanding-axes" className="scroll-mt-[160px] border-t border-ink-deep/10 pt-12 mt-12">
+          <div id="understanding-axes" className="scroll-mt-[173px] border-t border-ink-deep/10 pt-12 mt-12">
             <Reveal>
               <SectionEyebrow index="02" label="Understanding The Forces" />
               <h2 className="type-h2 text-ink">
@@ -155,7 +155,7 @@ export function HowToReadPage() {
       {/* 03 putting it together — closing CTA */}
       <section
         id="putting-it-together"
-        className="scroll-mt-[160px] bg-navy py-20 md:py-28"
+        className="scroll-mt-[173px] bg-navy py-20 md:py-28"
       >
         <div className="container-wide">
           <Reveal>
@@ -192,7 +192,7 @@ export function HowToReadPage() {
         </div>
       </section>
 
-      <FuturePageFooter />
+      <SiteFooter bg="bg-[#171c27]" />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { futures } from "../data/futures";
 import { InstitutionMark } from "./InstitutionMark";
@@ -7,6 +8,13 @@ interface FutureTopNavProps {
 }
 
 export function FutureTopNav({ activeSlug }: FutureTopNavProps) {
+  const activeRef = useRef<HTMLAnchorElement>(null);
+
+  // On narrow screens the tabs scroll sideways; keep the current one in view
+  useEffect(() => {
+    activeRef.current?.scrollIntoView({ block: "nearest", inline: "center" });
+  }, [activeSlug]);
+
   return (
     <header className="sticky top-0 z-50">
       <div className="bg-navy">
@@ -14,24 +22,28 @@ export function FutureTopNav({ activeSlug }: FutureTopNavProps) {
           <InstitutionMark tone="light" />
         </div>
       </div>
-      {/* Styled like the main site navigation (SiteHeader): 18px text, 1.5px underline on the current page */}
-      <nav aria-label="The four futures" className="border-b border-ink-deep/10 bg-paper">
-        <div className="container-wide flex h-11 items-center gap-6 overflow-x-auto">
-          {futures.map((future) => {
-            const isActive = future.slug === activeSlug;
-            return (
-              <Link
-                key={future.id}
-                to={`/four-futures/futures/${future.slug}`}
-                aria-current={isActive ? "page" : undefined}
-                className={`flex h-[26px] shrink-0 items-center border-b-[1.5px] pb-[6px] text-[18px] leading-[1.1] whitespace-nowrap text-ink transition-colors ${
-                  isActive ? "border-accent-blue" : "border-transparent hover:border-ink/50"
-                }`}
-              >
-                {future.codename.charAt(0) + future.codename.slice(1).toLowerCase()}
-              </Link>
-            );
-          })}
+      {/* Same style as the Big Ideas tab bar (IdeaTabs in src/pages/BigIdeaPage.tsx) */}
+      <nav aria-label="The four futures" className="border-b border-tab-rule bg-white">
+        <div className="container-wide overflow-x-auto pt-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <ul className="flex gap-2 lg:gap-6">
+            {futures.map((future) => {
+              const isActive = future.slug === activeSlug;
+              return (
+                <li key={future.id} className="shrink-0">
+                  <Link
+                    to={`/four-futures/futures/${future.slug}`}
+                    ref={isActive ? activeRef : undefined}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`-mb-px flex items-center border-b-3 px-4 py-2.5 text-[16px] leading-[1.1] font-medium whitespace-nowrap transition-colors sm:px-6 ${
+                      isActive ? "border-accent-blue text-ink" : "border-transparent text-muted hover:text-ink"
+                    }`}
+                  >
+                    {future.codename.charAt(0) + future.codename.slice(1).toLowerCase()}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </nav>
     </header>
