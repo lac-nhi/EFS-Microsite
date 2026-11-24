@@ -56,7 +56,7 @@ export const personas: Persona[] = [
       "Jesse returned to college after years working as a lineman apprentice, hoping to build a second career that draws on his practical experience without requiring physically demanding work forever. Despite that experience, he still has to complete foundational coursework before moving into his engineering technology sequence. He is learning how to use AI for schoolwork and isn't always sure which tools are worth trusting.",
     finances: "Paying for school through savings while continuing to work.",
     worldview: "Real-world experience still matters, even when the tools and workplaces change.",
-    strengths: ["Curiosity", "self-direction", "experimentation"],
+    strengths: ["Reliability", "collaboration", "practical problem-solving"],
     biggestFear:
       "Having to relocate for a better opportunity when his family and responsibilities make moving unrealistic and difficult.",
     successLooksLike:

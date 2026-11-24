@@ -7,23 +7,24 @@ type NavItem = { to: string; label: string; end?: boolean; external?: boolean }
 
 const NAV: NavItem[] = [
   { to: '/', label: 'Big Ideas', end: true },
-  // The Four Futures section opens in a new tab
-  { to: FOUR_FUTURES_URL, label: 'The Four Futures', external: true },
   { to: '/about', label: 'About' },
+  // The Four Futures section opens in a new tab (Figma 253:1302: last, with an "opens outside" icon)
+  { to: FOUR_FUTURES_URL, label: 'The Four Futures', external: true },
 ]
 
 /** Router link, or a plain new-tab link for items marked external. */
 function NavItemLink({ item, className }: { item: NavItem; className: (isActive: boolean) => string }) {
   if (item.external) {
     return (
-      <a href={item.to} target="_blank" rel="noopener noreferrer" className={className(false)}>
+      <a href={item.to} target="_blank" rel="noopener noreferrer" className={`${className(false)} items-start gap-2`}>
         {item.label}
+        <img src="/images/arrow-square-out.svg" alt="" width={18} height={18} className="size-[18px] shrink-0" />
         <span className="sr-only"> (opens in a new tab)</span>
       </a>
     )
   }
   return (
-    <NavLink to={item.to} end={item.end} className={({ isActive }) => className(isActive)}>
+    <NavLink to={item.to} end={item.end} className={({ isActive }) => `${className(isActive)} items-center`}>
       {item.label}
     </NavLink>
   )
@@ -37,7 +38,7 @@ export default function SiteHeader() {
   const setOpen = (fn: (v: boolean) => boolean) => setOpenOn(fn(open) ? pathname : null)
 
   return (
-    <header className="bg-navy text-white">
+    <header className="sticky top-0 z-50 bg-navy text-white">
       <div className="container-wide flex h-[76px] items-center justify-between sm:h-[100px]">
         <Link to="/" className="flex items-center gap-4" aria-label="Emerging Futures Studio home">
           <Logo className="w-[150px] sm:w-[190.313px]" />
@@ -53,7 +54,7 @@ export default function SiteHeader() {
               key={item.to}
               item={item}
               className={(isActive) =>
-                `flex h-[26px] items-center border-b-[1.5px] pb-[6px] text-[18px] leading-[1.1] whitespace-nowrap transition-colors ${
+                `flex h-[26px] border-b-[1.5px] pb-[6px] text-[18px] leading-[1.1] whitespace-nowrap transition-colors ${
                   isActive ? 'border-accent-blue' : 'border-transparent hover:border-white/50'
                 }`
               }
@@ -84,7 +85,7 @@ export default function SiteHeader() {
                 <NavItemLink
                   item={item}
                   className={(isActive) =>
-                    `block border-l-2 py-3 pl-3 text-[18px] leading-[1.1] ${isActive ? 'border-accent-blue' : 'border-transparent'}`
+                    `flex border-l-2 py-3 pl-3 text-[18px] leading-[1.1] ${isActive ? 'border-accent-blue' : 'border-transparent'}`
                   }
                 />
               </li>

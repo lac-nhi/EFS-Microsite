@@ -1,7 +1,8 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { Link, NavLink, useParams } from 'react-router-dom'
 import CroppedImage from '../components/CroppedImage'
 import SectionNav from '../components/SectionNav'
+const PersonaPopup = lazy(() => import('../four-futures/components/PersonaPopup'))
 import { BIG_IDEAS, type BigIdeaDetail, type InfoCard, type Persona } from '../content/bigIdeas'
 
 const SECTIONS = [
@@ -55,7 +56,7 @@ function IdeaTabs({ activeSlug }: { activeSlug: string }) {
 
 function Section({ id, title, children }: { id: SectionId; title: ReactNode; children: ReactNode }) {
   return (
-    <section id={id} className="flex scroll-mt-8 flex-col gap-6">
+    <section id={id} className="flex scroll-mt-[108px] flex-col gap-6 sm:scroll-mt-[132px]">
       <h2 className="type-h2 max-w-[750px]">{title}</h2>
       {children}
     </section>
@@ -77,7 +78,7 @@ function CardGrid({ cards, variant }: { cards: InfoCard[]; variant: 'filled' | '
   )
 }
 
-function PersonaStory({ persona, last }: { persona: Persona; last: boolean }) {
+function PersonaStory({ persona, last, onView }: { persona: Persona; last: boolean; onView: (name: string) => void }) {
   return (
     <article className={`flex flex-col gap-[22px] pt-6 ${last ? '' : 'border-b border-rule pb-8'}`}>
       <h3 className="type-h3">{persona.role}</h3>
@@ -94,9 +95,14 @@ function PersonaStory({ persona, last }: { persona: Persona; last: boolean }) {
             <span className="font-medium">{persona.name}</span> — {persona.descriptor}
           </p>
           {persona.personaHref && (
-            <a href={persona.personaHref} target="_blank" rel="noopener noreferrer" className="text-navy underline hover:no-underline">
-              View persona →<span className="sr-only"> for {persona.name} (opens in a new tab)</span>
-            </a>
+            <button
+              type="button"
+              onClick={() => onView(persona.name)}
+              aria-haspopup="dialog"
+              className="cursor-pointer self-start text-left text-navy underline hover:no-underline"
+            >
+              View persona →<span className="sr-only"> for {persona.name}</span>
+            </button>
           )}
         </div>
       </div>
@@ -105,8 +111,21 @@ function PersonaStory({ persona, last }: { persona: Persona; last: boolean }) {
 }
 
 function IdeaBody({ d }: { d: BigIdeaDetail }) {
+  // "View persona →" opens the Four Futures persona card as a pop-up on this page
+  const [openPersona, setOpenPersona] = useState<string | null>(null)
+  const [popupLoaded, setPopupLoaded] = useState(false) // stays mounted after first use so closing can animate
+  const closePersona = useCallback(() => setOpenPersona(null), [])
+  const viewPersona = (name: string) => {
+    setPopupLoaded(true)
+    setOpenPersona(name)
+  }
   return (
     <div className="flex min-w-0 flex-col gap-14 lg:gap-[72px]">
+      {popupLoaded && (
+        <Suspense fallback={null}>
+          <PersonaPopup name={openPersona} onClose={closePersona} />
+        </Suspense>
+      )}
       <Section id="at-a-glance" title="At a glance">
         <div className="type-body grid grid-cols-1 gap-7 sm:grid-cols-2">
           <div className="flex flex-col gap-2.5">
@@ -163,7 +182,7 @@ function IdeaBody({ d }: { d: BigIdeaDetail }) {
         <p className="type-small border-l-2 border-note-rule px-2 leading-[1.5] text-quiet italic">{d.dayInTheFuture.note}</p>
         <div className="flex flex-col gap-6">
           {d.dayInTheFuture.personas.map((p, i, all) => (
-            <PersonaStory key={p.name} persona={p} last={i === all.length - 1} />
+            <PersonaStory key={p.name} persona={p} last={i === all.length - 1} onView={viewPersona} />
           ))}
         </div>
       </Section>

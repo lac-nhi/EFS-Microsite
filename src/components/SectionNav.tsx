@@ -18,7 +18,7 @@ export default function SectionNav({
   const { active, select } = useActiveSection(sections.map((s) => s.id))
 
   return (
-    <nav aria-label={ariaLabel} className="sticky top-8 flex flex-col gap-3.5">
+    <nav aria-label={ariaLabel} className="sticky top-[132px] flex flex-col gap-3.5">
       {label && <p className="text-[15px] leading-[1.5] font-medium tracking-[0.06em] text-muted uppercase">{label}</p>}
       <ul className="flex flex-col gap-1.5">
         {sections.map((s) => {

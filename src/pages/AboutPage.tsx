@@ -12,7 +12,7 @@ const SECTIONS = [
 
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
-    <section id={id} className="flex scroll-mt-8 flex-col gap-6">
+    <section id={id} className="flex scroll-mt-[108px] flex-col gap-6 sm:scroll-mt-[132px]">
       <h2 className="type-h2 max-w-[750px]">{title}</h2>
       {children}
     </section>
