@@ -114,7 +114,7 @@ export function ExplorerSection() {
               </p>
               <Link
                 to="/four-futures/how-to-read"
-                className="type-body leading-[1.5] underline decoration-from-font underline-offset-auto hover:no-underline"
+                className="type-body leading-[1.5] font-medium underline decoration-from-font underline-offset-auto hover:no-underline"
               >
                 How to read the futures →
               </Link>

@@ -4,7 +4,7 @@ const STEPS = [
   {
     index: "01",
     label: "Select persona",
-    body: "Step into someone else's shoes.",
+    body: "Step into someone else’s shoes.",
   },
   {
     index: "02",
@@ -50,7 +50,7 @@ export function HowItWorksSection() {
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-[repeat(2,minmax(0,280px))] sm:justify-between">
                 {STEPS.map((step) => (
                   <div key={step.index} className="flex flex-col gap-1.5 border-t-2 border-explorer-cyan pt-3">
-                    <p className="type-small font-medium text-muted uppercase">
+                    <p className="type-small font-medium text-ink">
                       {step.index} — {step.label}
                     </p>
                     <p className="type-body">{step.body}</p>
