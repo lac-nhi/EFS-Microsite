@@ -11,7 +11,7 @@ export function FutureVoices({ voices }: { voices: FutureVoice[] }) {
   return (
     <div className="flex flex-col gap-10">
       {voices.map((voice) => (
-        <div key={voice.role} className="border-t border-ink-deep/10 pt-8">
+        <div key={voice.role} className="border-t border-ink-deep/10 pt-8 first:border-t-0 first:pt-4">
           <h3 className="type-h3 mb-3 text-ink">
             {voice.role}
           </h3>
