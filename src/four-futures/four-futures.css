@@ -32,10 +32,7 @@ html:has(.ff-root) {
   .ff-root [role="button"]:not(:disabled) {
     cursor: pointer;
   }
-  .ff-root ::selection {
-    background: #00a3e0;
-    color: #ffffff;
-  }
+  /* Text selection uses the browser default, same as the main site */
   .ff-root a {
     color: inherit;
   }

@@ -161,8 +161,8 @@ export function HowToReadPage() {
           <Reveal>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-[200px_1fr] md:gap-10 md:items-center">
               <div>
-                <span className="type-small inline-flex items-center justify-center rounded-[4px] bg-explorer-cyan px-4 py-2 text-center font-medium text-ink uppercase">
-                  Putting It Together
+                <span className="type-small inline-flex items-center justify-center bg-explorer-cyan p-1 text-center font-bold text-ink">
+                  Putting it together
                 </span>
               </div>
 
