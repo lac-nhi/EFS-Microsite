@@ -4,6 +4,7 @@ import CroppedImage, { type Crop } from '../components/CroppedImage'
 import FuturesFramework, { FuturesFrameworkStacked } from '../components/FuturesFramework'
 import { BIG_IDEAS, type BigIdea } from '../content/bigIdeas'
 import { FOUR_FUTURES_URL } from '../content/links'
+import ExternalLinkIcon from '../components/ExternalLinkIcon'
 
 type Photo = { src: string; alt: string; crop?: Crop; fit?: string }
 
@@ -93,7 +94,11 @@ export default function Home() {
               Designing the Career-Ready University. In this working design studio, participants reimagined the university with
               career readiness at the center of its purpose and of how it operates. Starting from{' '}
               <a href={FOUR_FUTURES_URL} target="_blank" rel="noopener noreferrer" className="font-medium underline hover:text-link">
-                four very different possible futures
+                four very different possible{' '}
+                <span className="whitespace-nowrap">
+                  futures
+                  <ExternalLinkIcon className="ml-2 align-[-0.1em]" />
+                </span>
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>{' '}
               for higher education, they explored how career readiness might change across the country.
