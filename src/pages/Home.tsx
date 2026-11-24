@@ -59,7 +59,7 @@ function BigIdeaCard({ idea }: { idea: BigIdea }) {
         <div className="type-body">
           <p className="mb-3">{idea.body}</p>
           <p>
-            <strong className="font-bold">The shift it proposes:</strong> {idea.shift}
+            <strong className="font-medium">The shift it proposes:</strong> {idea.shift}
           </p>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default function Home() {
               higher education, industry, philanthropy and public policy to Tempe, Arizona, for the Emerging Futures Studio:
               Designing the Career-Ready University. In this working design studio, participants reimagined the university with
               career readiness at the center of its purpose and of how it operates. Starting from{' '}
-              <a href={FOUR_FUTURES_URL} target="_blank" rel="noopener noreferrer" className="font-medium text-white underline hover:no-underline">
+              <a href={FOUR_FUTURES_URL} target="_blank" rel="noopener noreferrer" className="font-medium underline hover:text-link">
                 four very different possible futures
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>{' '}
