@@ -37,13 +37,13 @@ export function ExplorerSection() {
               <div className="mt-9 flex flex-col gap-4 min-[430px]:flex-row min-[430px]:flex-wrap min-[430px]:items-center">
                 <a
                   href="#personas"
-                  className="type-body rounded-[4px] border border-explorer-cyan bg-explorer-cyan px-6 py-3 text-center text-ink-deep transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="type-body font-medium rounded-[4px] border border-explorer-cyan bg-explorer-cyan px-6 py-3 text-center text-ink-deep transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   Select your persona
                 </a>
                 <a
                   href="#futures"
-                  className="type-body rounded-[4px] border border-white px-6 py-3 text-center text-white transition-colors duration-300 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="type-body font-medium rounded-[4px] border border-white px-6 py-3 text-center text-white transition-colors duration-300 hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   Explore the futures
                 </a>
