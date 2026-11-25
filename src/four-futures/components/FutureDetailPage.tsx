@@ -16,7 +16,7 @@ import { TransformIndicatorChart } from "./TransformIndicatorChart";
 function SectionEyebrow({ index, label }: { index: string; label: string }) {
   return (
     // The rule runs along the same row as the label, filling the rest of the width
-    <p className="type-small mb-2 flex items-center gap-3 font-medium text-muted uppercase">
+    <p className="type-small mb-2 flex items-center gap-3 font-medium tracking-[0.5px] text-muted uppercase">
       <span className="min-w-0">
         {index} — {label}
       </span>

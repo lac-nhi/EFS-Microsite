@@ -19,7 +19,7 @@ export default function SectionNav({
 
   return (
     <nav aria-label={ariaLabel} className="sticky top-[132px] flex flex-col gap-3.5">
-      {label && <p className="text-[15px] leading-[1.5] font-medium tracking-[0.06em] text-muted uppercase">{label}</p>}
+      {label && <p className="text-[15px] leading-[1.5] font-medium tracking-[0.5px] text-muted uppercase">{label}</p>}
       <ul className="flex flex-col gap-1.5">
         {sections.map((s) => {
           const isActive = s.id === active

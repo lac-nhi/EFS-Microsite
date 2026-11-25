@@ -14,7 +14,7 @@ const SECTIONS = [
 function SectionEyebrow({ index, label }: { index: string; label: string }) {
   return (
     // The rule runs along the same row as the label, filling the rest of the width
-    <p className="type-small mb-2 flex items-center gap-3 font-medium text-muted uppercase">
+    <p className="type-small mb-2 flex items-center gap-3 font-medium tracking-[0.5px] text-muted uppercase">
       <span className="min-w-0">
         {index} — {label}
       </span>
@@ -186,7 +186,7 @@ export function HowToReadPage() {
                   </p>
                 </div>
 
-                <p className="type-h3 mt-6 text-white">
+                <p className="type-body mt-6 font-medium text-white">
                   The futures explore what becomes possible and what becomes
                   difficult when these forces move together.
                 </p>

@@ -31,7 +31,7 @@ export function FutureSidebarNav({
   return (
     <nav className="hidden h-full md:block">
       <div className="sticky top-[177px]">
-        <p className="mb-3.5 text-[15px] leading-[1.5] font-medium tracking-[0.06em] text-muted uppercase">{title}</p>
+        <p className="mb-3.5 text-[15px] leading-[1.5] font-medium tracking-[0.5px] text-muted uppercase">{title}</p>
         <ul className="flex flex-col gap-1.5">
           {sections.map((section) => {
             const isActive = activeId === section.id;
